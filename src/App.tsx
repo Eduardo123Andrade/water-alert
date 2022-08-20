@@ -4,9 +4,14 @@ import { Home } from './screens';
 function App() {
   return (
     <div className="App">
-      <body className='Body'>
+      <header className="App-header">
+        {/* <body className='Body'> */}
         <Home />
-      </body>
+        {/* </body> */}
+      </header>
+      {/* <body>
+        <Home />
+      </body> */}
     </div>
   );
 }
