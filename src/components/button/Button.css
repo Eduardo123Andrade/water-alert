@@ -1,0 +1,18 @@
+.Button {
+  cursor: pointer;
+  border: none;
+  margin: 20px 0px 0px;
+  border-radius: 8px;
+  box-shadow: rgb(235 235 235) 0px 6px 0px;
+  height: 55px;
+  width: 300px;
+  background-color: white;
+}
+
+#title {
+  cursor: pointer;
+  font-family: ArialRounded;
+  font-size: 22px;
+  color: rgb(217, 85, 80);
+  font-weight: bold;
+}

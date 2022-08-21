@@ -1,4 +1,5 @@
 import { useTimer } from '../../hooks';
+import { Button } from '../button';
 import './Timer.css';
 
 function formatterTimer(seconds: number) {
@@ -19,7 +20,7 @@ export const Timer = () => {
     onStart()
   }
 
-  const onPressRest = () => {
+  const onPressReset = () => {
     onReset()
   }
 
@@ -30,14 +31,16 @@ export const Timer = () => {
       </label>
       <div>
         {status === 'IDLE' && (
-          <button onClick={onPressStart}>
-            start
-          </button>
+          <Button
+            onPress={onPressStart}
+            title='start'
+          />
         )}
         {status === 'FINISHED' && (
-          <button onClick={onPressRest}>
-            reset
-          </button>
+          <Button
+            onPress={onPressReset}
+            title='reset'
+          />
         )}
       </div>
     </div>
