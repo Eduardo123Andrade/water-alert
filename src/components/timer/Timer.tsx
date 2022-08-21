@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { TimerStatus } from '../../types';
-import './Timer.css'
+import { useTimer } from '../../hooks';
+import './Timer.css';
 
 function formatterTimer(seconds: number) {
   const date = new Date()
@@ -13,57 +12,33 @@ function formatterTimer(seconds: number) {
   return `${hourString}:${minuteString}:${secondString}`
 }
 
-const ONE_SECOND_IN_MILLISECONDS = 1000
-
-
 export const Timer = () => {
-  const [currentTime, setTimer] = useState(10)
-  const [intervalId, setIntervalId] = useState<NodeJS.Timer>()
-  const [status, setStatus] = useState<TimerStatus>('IDLE')
+  const [{ timer, status }, { onStart, onReset }] = useTimer()
 
-  useEffect(() => {
-    if (status === 'RUNNING' && !intervalId) {
-      const id = setInterval(() => {
-        setTimer(prevState => --prevState)
-      }, ONE_SECOND_IN_MILLISECONDS)
-      setIntervalId(id)
-    }
-  }, [status, setIntervalId, intervalId])
+  const onPressStart = () => {
+    onStart()
+  }
 
-  useEffect(() => {
-    if (currentTime <= 0 && intervalId) {
-      clearInterval(intervalId)
-      setIntervalId(undefined)
-      setStatus('FINISHED')
-    }
-  }, [status, intervalId, setIntervalId, currentTime])
-
+  const onPressRest = () => {
+    onReset()
+  }
 
   return (
     <div>
       <label id='timer-label'>
-        {formatterTimer(currentTime)}
+        {formatterTimer(timer)}
       </label>
       <div>
-        <button onClick={() => {
-          setStatus('RUNNING')
-        }}>
-          start
-        </button>
-
-        <button onClick={() => {
-          setStatus('STOPPED') 
-        }}>
-          pause
-        </button>
-
-        <button onClick={() => {
-          setStatus('IDLE')
-          setTimer(10)
-          setIntervalId(undefined)
-        }}>
-          reset
-        </button>
+        {status === 'IDLE' && (
+          <button onClick={onPressStart}>
+            start
+          </button>
+        )}
+        {status === 'FINISHED' && (
+          <button onClick={onPressRest}>
+            reset
+          </button>
+        )}
       </div>
     </div>
   )
