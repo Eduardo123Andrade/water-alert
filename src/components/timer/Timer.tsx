@@ -14,7 +14,7 @@ function formatterTimer(seconds: number) {
 }
 
 export const Timer = () => {
-  const [{ timer, status }, { onStart, onReset }] = useTimer()
+  const [{ timer, status }, { onStart, onReset }] = useTimer(10)
 
   const onPressStart = () => {
     onStart()
