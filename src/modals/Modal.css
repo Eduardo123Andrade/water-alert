@@ -9,16 +9,31 @@
 }
 
 #Card {
-  background-color: #FFFFFF;
+  background-color: #F2F2F2;
   width: 500px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 20px;
-  padding-top: 30px;
+  height: 350px;
 }
 
-label {
-  color: #000;
+#Close-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  font-size: 20px;
+  color: black;
+}
+
+#Close-label {
+  margin-right: 20px;
+  margin-top: 10px;
+  user-select: none;
+  cursor: pointer;
+}
+
+#Children {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#Footer {
 }
