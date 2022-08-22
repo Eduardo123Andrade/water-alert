@@ -1,0 +1,17 @@
+.InputTimer {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+#Title {
+  display: flex;
+  padding-bottom: 5px;
+  font-size: 20px;
+  color: black;
+  justify-content: flex-start;
+}
+
+#InputTimer {
+  width: 70px;
+}
