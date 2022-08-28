@@ -1,12 +1,14 @@
 import './App.css';
-import { Modal } from './modals';
+import { WaterAlertProvider } from './providers';
 import { Home } from './screens';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Home />
+        <WaterAlertProvider>
+          <Home />
+        </WaterAlertProvider>
       </header>
       {/* <body>
         <Home />

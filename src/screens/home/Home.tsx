@@ -1,24 +1,38 @@
 import { useState } from 'react'
-import { Timer } from '../../components'
-import { Modal } from '../../modals'
-import { WaterAlertProvider } from '../../providers'
+import { Button, Timer } from '../../components'
+import { useWaterAlert } from '../../hooks'
+import { TimerModal, WaterModal } from '../../modals'
 import './HomeStye.css'
 
 export const Home = () => {
-  const [showModal, setShowModal] = useState(true)
+  const [showTimerModal, setShowTimerModal] = useState(false)
+  const [showWaterModal, setShowWaterModal] = useState(true)
+  const [{ status }] = useWaterAlert()
 
   const onRequestClose = () => {
-    setShowModal(false)
+    setShowTimerModal(false)
+    setShowWaterModal(false)
+  }
+
+  const onPressShowTimerModal = () => {
+    setShowTimerModal(true)
   }
 
   return (
-    <WaterAlertProvider>
-      <div className='Home'>
-        <div className='Test'>
-          <Timer />
-          <Modal visible={showModal} onRequestClose={onRequestClose} />
-        </div>
+    <div className='Home'>
+      <div className='Test'>
+        <Timer />
+
+        <Button
+          title='Configurar timer'
+          onPress={onPressShowTimerModal}
+        />
+        <TimerModal visible={showTimerModal} onRequestClose={onRequestClose} />
+        <WaterModal
+          visible={showWaterModal}
+          onRequestClose={onRequestClose}
+        />
       </div>
-    </WaterAlertProvider>
+    </div>
   )
 }
