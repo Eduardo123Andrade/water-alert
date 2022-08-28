@@ -1,0 +1,15 @@
+#Body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: blue;
+}
+
+#Timer-Modal-Body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  background-color: blueviolet;
+}
