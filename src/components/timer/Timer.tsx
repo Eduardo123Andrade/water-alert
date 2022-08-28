@@ -34,6 +34,7 @@ export const Timer = () => {
           <Button
             onPress={onPressStart}
             title='start'
+            disabled={status === 'IDLE'}
           />
         )}
         {status === 'FINISHED' && (

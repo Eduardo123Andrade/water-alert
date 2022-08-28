@@ -12,7 +12,7 @@ type WaterModalProps = {
 
 export const WaterModal = (props: WaterModalProps) => {
   return (
-    <BaseModal {...props} visible>
+    <BaseModal {...props}>
       <div id='Water-Modal-Body'>
         <label id='Water-Modal-label'>
           Beba agua

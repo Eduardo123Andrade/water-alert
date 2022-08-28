@@ -30,13 +30,7 @@ type WaterAlertProviderProp = {
 export const WaterAlertProvider = ({
   children
 }: WaterAlertProviderProp) => {
-  // const [intervalTimer, updateIntervalTimer] = useState(0)
   const [{ timer, status }, { onStart, onReset, setTimer }] = useTimer()
-
-  // useEffect(() => {
-  //   console.log(intervalTimer)
-  //   setTimer()
-  // }, [intervalTimer])
 
   const setIntervalTimer = (intervalTimerInsSeconds: number) => {
     setTimer(intervalTimerInsSeconds)
