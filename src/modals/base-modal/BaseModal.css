@@ -8,43 +8,31 @@
   align-items: center;
 }
 
-#Body {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: blue;
-}
-
-#Card {
+#Card-Modal {
   background-color: #F2F2F2;
   width: 500px;
   height: 350px;
 }
 
-
-#Close-button {
+#Modal-close-button {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 100%;
-  font-size: 20px;
-  color: black;
+  font-size: 25px;
 }
 
 #Close-label {
   margin-right: 20px;
   margin-top: 10px;
+  margin-bottom: 10px;
   user-select: none;
   cursor: pointer;
+  color: black;
 }
 
-#Children {
+#Base-Modal-Children {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: aqua;
-}
-
-#Footer {
-  background-color: bisque;
+  display: flex;
+  height: unset;
 }
