@@ -19,9 +19,9 @@ export type TimerProviderData = [
   actions: TimerProviderActions
 ]
 
-export const useTimer = (timeCounter?: number): TimerProviderData => {
-  const [timer, updateTimer] = useState(timeCounter)
-  const [initialTimer, updateInitialTimer] = useState(timeCounter)
+export const useTimer = (): TimerProviderData => {
+  const [timer, updateTimer] = useState(0)
+  const [initialTimer, updateInitialTimer] = useState(0)
   const [intervalId, setIntervalId] = useState<NodeJS.Timer>()
   const [status, setStatus] = useState<TimerStatus>('IDLE')
 
@@ -62,11 +62,4 @@ export const useTimer = (timeCounter?: number): TimerProviderData => {
     { timer, status },
     { onStart, onReset, setTimer }
   ]
-
-  // const context = useContext(TimerProvider.Context)
-
-  // if (!context)
-  //   throw new Error('This hook must be wrapped by TimerProvider')
-
-  // return context
 }
