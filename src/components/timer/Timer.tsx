@@ -1,4 +1,4 @@
-import { useTimer } from '../../hooks';
+import { useTimer, useWaterAlert } from '../../hooks';
 import { Button } from '../button';
 import './Timer.css';
 
@@ -14,7 +14,7 @@ function formatterTimer(seconds: number) {
 }
 
 export const Timer = () => {
-  const [{ timer, status }, { onStart, onReset }] = useTimer(10)
+  const [{ timer, status }, { onStart, onReset }] = useWaterAlert()
 
   const onPressStart = () => {
     onStart()

@@ -11,6 +11,7 @@ type TimerProviderState = {
 type TimerProviderActions = {
   onStart: () => void
   onReset: () => void
+  setTimer: (time: number) => void
 }
 
 export type TimerProviderData = [
@@ -18,19 +19,20 @@ export type TimerProviderData = [
   actions: TimerProviderActions
 ]
 
-export const useTimer = (timeCounter: number): TimerProviderData => {
-  const [timer, setTimer] = useState(timeCounter)
+export const useTimer = (timeCounter?: number): TimerProviderData => {
+  const [timer, updateTimer] = useState(timeCounter)
+  const [initialTimer, updateInitialTimer] = useState(timeCounter)
   const [intervalId, setIntervalId] = useState<NodeJS.Timer>()
   const [status, setStatus] = useState<TimerStatus>('IDLE')
 
   useEffect(() => {
     if (status === 'RUNNING' && !intervalId) {
       const id = setInterval(() => {
-        setTimer(prevState => --prevState)
+        updateTimer(prevState => --prevState)
       }, ONE_SECOND_IN_MILLISECONDS)
       setIntervalId(id)
     }
-  }, [status, setIntervalId, intervalId])
+  }, [status, setIntervalId, intervalId, updateTimer])
 
   useEffect(() => {
     if (timer <= 0 && intervalId) {
@@ -41,10 +43,6 @@ export const useTimer = (timeCounter: number): TimerProviderData => {
   }, [status, intervalId, setIntervalId, timer])
 
 
-  useEffect(() => {
-    console.log({ status })
-  }, [status])
-
   const onStart = () => {
     setStatus('RUNNING')
   }
@@ -52,12 +50,17 @@ export const useTimer = (timeCounter: number): TimerProviderData => {
   const onReset = () => {
     setStatus('IDLE')
     setIntervalId(undefined)
-    setTimer(10)
+    updateTimer(initialTimer)
+  }
+
+  const setTimer = (time: number) => {
+    updateTimer(time)
+    updateInitialTimer(time)
   }
 
   return [
     { timer, status },
-    { onStart, onReset, }
+    { onStart, onReset, setTimer }
   ]
 
   // const context = useContext(TimerProvider.Context)

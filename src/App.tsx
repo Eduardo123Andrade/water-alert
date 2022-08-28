@@ -7,7 +7,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Home />
-        <Modal />
       </header>
       {/* <body>
         <Home />
